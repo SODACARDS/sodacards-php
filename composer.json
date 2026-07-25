@@ -8,12 +8,12 @@
     "api",
     "sdk"
   ],
-  "homepage": "https://developers.sodacards.com",
+  "homepage": "https://developer.sodacards.com",
   "license": "MIT",
   "authors": [
     {
       "name": "SODACARDS",
-      "homepage": "https://developers.sodacards.com"
+      "homepage": "https://developer.sodacards.com"
     }
   ],
   "require": {
@@ -39,7 +39,7 @@
     }
   },
   "support": {
-    "docs": "https://developers.sodacards.com",
+    "docs": "https://developer.sodacards.com",
     "email": "support@sodacards.com"
   }
 }
