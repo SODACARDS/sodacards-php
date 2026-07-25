@@ -1,5 +1,4 @@
 {
-    "name": "sodacards/sdk",
     "description": "Sell gift cards and game top-ups from your own systems.",
     "keywords": [
         "openapitools",
@@ -31,13 +30,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": {
-            "Sodacards\\": "lib/"
-        }
+        "psr-4": { "Sodacards\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": {
-            "Sodacards\\Test\\": "test/"
-        }
+        "psr-4": { "Sodacards\\Test\\" : "test/" }
     }
 }
