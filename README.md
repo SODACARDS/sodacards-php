@@ -1,152 +1,101 @@
-# sodacards
+# SODACARDS PHP SDK
 
-Sell gift cards and game top-ups from your own systems.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Docs](https://img.shields.io/badge/docs-developers.sodacards.com-003087.svg)](https://developers.sodacards.com)
 
+The official PHP client for the [SODACARDS Developer API](https://developers.sodacards.com) — sell gift cards and game top-ups from your own systems, across West Africa.
 
-## Installation & Usage
+Browse the catalog, place orders, retrieve delivered codes, and subscribe to webhooks.
 
-### Requirements
+## Requirements
 
-PHP 8.1 and later.
+PHP 8.1 or newer, with the Guzzle HTTP client (installed automatically by Composer).
 
-### Composer
+## Installation
 
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
-
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
-    }
-  ],
-  "require": {
-    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
-  }
-}
+```sh
+composer require sodacards/sdk
 ```
 
-Then run `composer install`
+## Authentication
 
-### Manual Installation
+Every request is authenticated with an API key that you generate from the [developer dashboard](https://developers.sodacards.com). Keys are prefixed `sc_live_` (production) or `sc_test_` (sandbox); the sandbox returns fake codes so you can integrate safely.
 
-Download the files and include `autoload.php`:
+Load the key from the environment — never hard-code it in source.
+
+```php
+$config = Sodacards\Configuration::getDefaultConfiguration()
+    ->setApiKey('X-API-Key', getenv('SODACARDS_API_KEY'));
+```
+
+## Quickstart
 
 ```php
 <?php
-require_once('/path/to/sodacards/vendor/autoload.php');
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$config = Sodacards\Configuration::getDefaultConfiguration()
+    ->setApiKey('X-API-Key', getenv('SODACARDS_API_KEY'));
+
+$api = new Sodacards\Api\DefaultApi(new GuzzleHttp\Client(), $config);
+
+// 1. Discover what you can sell.
+$catalog = $api->listCatalog();
+
+// 2. Place an order for one product.
+$request = new Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest([
+    'lines' => [
+        new Sodacards\Model\SodacardsDevpublicV1OrderLine([
+            'product_id' => 'prod_123',
+            'quantity'   => 1,
+        ]),
+    ],
+    'reference' => 'my-internal-ref-0001',
+]);
+$order = $api->placeOrder($request);
+
+// 3. Read back the delivered codes once the order is fulfilled.
+$codes = $api->revealOrderCodes($order->getOrder()->getId());
+print_r($codes);
 ```
 
-## Getting Started
+## Idempotency
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+`placeOrder` is the only state-changing call. Send an `Idempotency-Key` header so a retried request never creates a duplicate order — the API returns the original order for a repeated key.
 
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
+## Operations
 
+| Method | Description |
+| --- | --- |
+| `listCatalog` | List sellable products (cursor-paginated). |
+| `getProduct` | Fetch a single product by id. |
+| `placeOrder` | Buy one or more products. |
+| `getOrder` | Retrieve an order by id. |
+| `listOrders` | List your orders (cursor-paginated). |
+| `revealOrderCodes` | Reveal the delivered codes for a fulfilled order. |
+| `registerWebhook` | Subscribe an endpoint to events. |
+| `listWebhooks` | List your webhook endpoints. |
+| `deleteWebhook` | Remove a webhook endpoint. |
+| `ping` | Health check for your credentials. |
 
+## Pagination
 
-// Configure API key authorization: ApiKeyAuth
-$config = Sodacards\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Sodacards\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+List endpoints use cursor (keyset) pagination. Pass the `nextCursor` returned by a response as the `cursor` of the next call until it is empty.
 
+## Errors
 
-$apiInstance = new Sodacards\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | id is the webhook endpoint to remove.
+Failed requests throw `Sodacards\ApiException`, which carries the HTTP status and the API error body.
 
-try {
-    $result = $apiInstance->deleteWebhook($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->deleteWebhook: ', $e->getMessage(), PHP_EOL;
-}
+## Documentation and support
 
-```
+- API reference and guides: <https://developers.sodacards.com>
+- Support: <mailto:support@sodacards.com>
 
-## API Endpoints
+## License
 
-All URIs are relative to *https://api.sodacards.com*
+Released under the [MIT License](./LICENSE).
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*DefaultApi* | [**deleteWebhook**](docs/Api/DefaultApi.md#deletewebhook) | **DELETE** /v1/webhooks/{id} | DeleteWebhook
-*DefaultApi* | [**getOrder**](docs/Api/DefaultApi.md#getorder) | **GET** /v1/orders/{id} | GetOrder
-*DefaultApi* | [**getProduct**](docs/Api/DefaultApi.md#getproduct) | **GET** /v1/products/{id} | GetProduct
-*DefaultApi* | [**listCatalog**](docs/Api/DefaultApi.md#listcatalog) | **GET** /v1/catalog | ListCatalog
-*DefaultApi* | [**listOrders**](docs/Api/DefaultApi.md#listorders) | **GET** /v1/orders | ListOrders
-*DefaultApi* | [**listWebhooks**](docs/Api/DefaultApi.md#listwebhooks) | **GET** /v1/webhooks | ListWebhooks
-*DefaultApi* | [**ping**](docs/Api/DefaultApi.md#ping) | **GET** /v1/ping | Ping
-*DefaultApi* | [**placeOrder**](docs/Api/DefaultApi.md#placeorder) | **POST** /v1/orders | PlaceOrder
-*DefaultApi* | [**registerWebhook**](docs/Api/DefaultApi.md#registerwebhook) | **POST** /v1/webhooks | RegisterWebhook
-*DefaultApi* | [**revealOrderCodes**](docs/Api/DefaultApi.md#revealordercodes) | **GET** /v1/orders/{order_id}/codes | RevealOrderCodes
+---
 
-## Models
-
-- [Amount](docs/Model/Amount.md)
-- [SodacardsDevpublicV1DeleteWebhookRequest](docs/Model/SodacardsDevpublicV1DeleteWebhookRequest.md)
-- [SodacardsDevpublicV1GetOrderRequest](docs/Model/SodacardsDevpublicV1GetOrderRequest.md)
-- [SodacardsDevpublicV1GetOrderResponse](docs/Model/SodacardsDevpublicV1GetOrderResponse.md)
-- [SodacardsDevpublicV1GetProductRequest](docs/Model/SodacardsDevpublicV1GetProductRequest.md)
-- [SodacardsDevpublicV1GetProductResponse](docs/Model/SodacardsDevpublicV1GetProductResponse.md)
-- [SodacardsDevpublicV1ListCatalogRequest](docs/Model/SodacardsDevpublicV1ListCatalogRequest.md)
-- [SodacardsDevpublicV1ListCatalogResponse](docs/Model/SodacardsDevpublicV1ListCatalogResponse.md)
-- [SodacardsDevpublicV1ListOrdersRequest](docs/Model/SodacardsDevpublicV1ListOrdersRequest.md)
-- [SodacardsDevpublicV1ListOrdersResponse](docs/Model/SodacardsDevpublicV1ListOrdersResponse.md)
-- [SodacardsDevpublicV1ListWebhooksResponse](docs/Model/SodacardsDevpublicV1ListWebhooksResponse.md)
-- [SodacardsDevpublicV1Money](docs/Model/SodacardsDevpublicV1Money.md)
-- [SodacardsDevpublicV1Order](docs/Model/SodacardsDevpublicV1Order.md)
-- [SodacardsDevpublicV1OrderItem](docs/Model/SodacardsDevpublicV1OrderItem.md)
-- [SodacardsDevpublicV1OrderItemInputFieldsEntry](docs/Model/SodacardsDevpublicV1OrderItemInputFieldsEntry.md)
-- [SodacardsDevpublicV1OrderLine](docs/Model/SodacardsDevpublicV1OrderLine.md)
-- [SodacardsDevpublicV1OrderLineInputFieldsEntry](docs/Model/SodacardsDevpublicV1OrderLineInputFieldsEntry.md)
-- [SodacardsDevpublicV1PingResponse](docs/Model/SodacardsDevpublicV1PingResponse.md)
-- [SodacardsDevpublicV1PlaceOrderRequest](docs/Model/SodacardsDevpublicV1PlaceOrderRequest.md)
-- [SodacardsDevpublicV1PlaceOrderResponse](docs/Model/SodacardsDevpublicV1PlaceOrderResponse.md)
-- [SodacardsDevpublicV1PlacedOrder](docs/Model/SodacardsDevpublicV1PlacedOrder.md)
-- [SodacardsDevpublicV1Product](docs/Model/SodacardsDevpublicV1Product.md)
-- [SodacardsDevpublicV1ProductFaceValue](docs/Model/SodacardsDevpublicV1ProductFaceValue.md)
-- [SodacardsDevpublicV1RegisterWebhookRequest](docs/Model/SodacardsDevpublicV1RegisterWebhookRequest.md)
-- [SodacardsDevpublicV1RegisterWebhookResponse](docs/Model/SodacardsDevpublicV1RegisterWebhookResponse.md)
-- [SodacardsDevpublicV1RevealOrderCodesRequest](docs/Model/SodacardsDevpublicV1RevealOrderCodesRequest.md)
-- [SodacardsDevpublicV1RevealOrderCodesResponse](docs/Model/SodacardsDevpublicV1RevealOrderCodesResponse.md)
-- [SodacardsDevpublicV1RevealedCode](docs/Model/SodacardsDevpublicV1RevealedCode.md)
-- [SodacardsDevpublicV1Webhook](docs/Model/SodacardsDevpublicV1Webhook.md)
-
-## Authorization
-
-Authentication schemes defined for the API:
-### ApiKeyAuth
-
-- **Type**: API key
-- **API key parameter name**: X-API-Key
-- **Location**: HTTP header
-
-
-## Tests
-
-To run the tests, use:
-
-```bash
-composer install
-vendor/bin/phpunit
-```
-
-## Author
-
-
-
-## About this package
-
-This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
-
-- API version: `1.0.0`
-    - Generator version: `7.24.0`
-- Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
+This SDK is generated from the SODACARDS OpenAPI specification and is regenerated automatically whenever the API changes. Open issues on the [documentation portal](https://developers.sodacards.com) rather than editing generated files directly.
