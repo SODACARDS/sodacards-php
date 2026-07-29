@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * SodacardsDevpublicV1PlacedOrderTest Class Doc Comment
  *
  * @category    Class
- * @description PlacedOrder is the accepted order: its id, the amount charged to the wallet in  FCFA, and its current status.
+ * @description PlacedOrder is the accepted order: its id, the amount charged to the wallet  (see total), and its current status.
  * @package     Sodacards
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

@@ -392,7 +392,7 @@ class SodacardsDevpublicV1OrderItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets unit_price
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $unit_price unit_price is the price of one unit, in FCFA.
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $unit_price unit_price is the price of one unit, in the currency of Money.
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class SodacardsDevpublicV1OrderItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets line_total
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $line_total line_total is unit_price times quantity, in FCFA.
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $line_total line_total is unit_price times quantity, in the currency of Money.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \Sodacards\ObjectSerializer;
  * SodacardsDevpublicV1PlacedOrder Class Doc Comment
  *
  * @category Class
- * @description PlacedOrder is the accepted order: its id, the amount charged to the wallet in  FCFA, and its current status.
+ * @description PlacedOrder is the accepted order: its id, the amount charged to the wallet  (see total), and its current status.
  * @package  Sodacards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -371,7 +371,7 @@ class SodacardsDevpublicV1PlacedOrder implements ModelInterface, ArrayAccess, \J
     /**
      * Sets total
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $total total is the amount charged to the reseller's wallet, in FCFA.
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $total total is the amount charged to the reseller's wallet, in the currency of Money.
      *
      * @return self
      */

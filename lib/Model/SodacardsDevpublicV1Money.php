@@ -35,7 +35,7 @@ use \Sodacards\ObjectSerializer;
  * SodacardsDevpublicV1Money Class Doc Comment
  *
  * @category Class
- * @description Money is an amount in the currency&#39;s minor units together with its ISO-4217  code. XOF (the West-African CFA franc) has no minor unit, so for XOF amount is  the whole franc value.
+ * @description Money is an amount in a currency&#39;s minor units, together with the currency&#39;s  ISO-4217 code and its number of decimal places, so the amount can be  interpreted without assuming the currency. XOF (the West-African CFA franc) has  no minor unit, so an XOF amount is a whole franc value.
  * @package  Sodacards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPITypes = [
         'amount' => '\Sodacards\Model\Amount',
-        'currency' => 'string'
+        'currency' => 'string',
+        'minor_unit_exponent' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPIFormats = [
         'amount' => null,
-        'currency' => null
+        'currency' => null,
+        'minor_unit_exponent' => 'int32'
     ];
 
     /**
@@ -81,7 +83,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static array $openAPINullables = [
         'amount' => false,
-        'currency' => false
+        'currency' => false,
+        'minor_unit_exponent' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'currency' => 'currency'
+        'currency' => 'currency',
+        'minor_unit_exponent' => 'minorUnitExponent'
     ];
 
     /**
@@ -181,7 +185,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'currency' => 'setCurrency',
+        'minor_unit_exponent' => 'setMinorUnitExponent'
     ];
 
     /**
@@ -191,7 +196,8 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'currency' => 'getCurrency',
+        'minor_unit_exponent' => 'getMinorUnitExponent'
     ];
 
     /**
@@ -253,6 +259,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('minor_unit_exponent', $data ?? [], null);
     }
 
     /**
@@ -347,6 +354,33 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets minor_unit_exponent
+     *
+     * @return int|null
+     */
+    public function getMinorUnitExponent()
+    {
+        return $this->container['minor_unit_exponent'];
+    }
+
+    /**
+     * Sets minor_unit_exponent
+     *
+     * @param int|null $minor_unit_exponent minor_unit_exponent is the currency's number of decimal places (0 for XOF,  2 for USD): amount divided by 10^minor_unit_exponent is the major-unit value.
+     *
+     * @return self
+     */
+    public function setMinorUnitExponent($minor_unit_exponent)
+    {
+        if (is_null($minor_unit_exponent)) {
+            throw new \InvalidArgumentException('non-nullable minor_unit_exponent cannot be null');
+        }
+        $this->container['minor_unit_exponent'] = $minor_unit_exponent;
 
         return $this;
     }

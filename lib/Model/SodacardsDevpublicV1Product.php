@@ -440,7 +440,7 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets price
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $price price is what the reseller pays, in FCFA. It is absent when the item is not  yet priced (listed but not purchasable).
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $price price is what the reseller pays, in the currency of Money. It is absent when the item is not  yet priced (listed but not purchasable).
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets strike_price
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $strike_price strike_price is an optional reference (pre-discount) price, in FCFA, for  display. Absent when there is none.
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $strike_price strike_price is an optional reference (pre-discount) price, in the currency of Money, for  display. Absent when there is none.
      *
      * @return self
      */

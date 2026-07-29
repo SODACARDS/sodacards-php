@@ -392,7 +392,7 @@ class SodacardsDevpublicV1Order implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets total
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $total total is the amount charged for the order, in FCFA.
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $total total is the amount charged for the order, in the currency of Money.
      *
      * @return self
      */
