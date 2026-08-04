@@ -1,6 +1,6 @@
 <?php
 /**
- * SodacardsDevpublicV1Money
+ * SodacardsDevpublicV1GetBalanceResponse
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Sodacards\ObjectSerializer;
 
 /**
- * SodacardsDevpublicV1Money Class Doc Comment
+ * SodacardsDevpublicV1GetBalanceResponse Class Doc Comment
  *
  * @category Class
  * @package  Sodacards
@@ -40,7 +40,7 @@ use \Sodacards\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSerializable
+class SodacardsDevpublicV1GetBalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'sodacards.devpublic.v1.Money';
+    protected static $openAPIModelName = 'sodacards.devpublic.v1.GetBalanceResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'amount' => '\Sodacards\Model\Amount',
-        'currency' => 'string',
-        'minor_unit_exponent' => 'int'
+        'balance' => '\Sodacards\Model\SodacardsDevpublicV1Money'
     ];
 
     /**
@@ -70,9 +68,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null,
-        'minor_unit_exponent' => 'int32'
+        'balance' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'currency' => false,
-        'minor_unit_exponent' => false
+        'balance' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency',
-        'minor_unit_exponent' => 'minorUnitExponent'
+        'balance' => 'balance'
     ];
 
     /**
@@ -183,9 +175,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'minor_unit_exponent' => 'setMinorUnitExponent'
+        'balance' => 'setBalance'
     ];
 
     /**
@@ -194,9 +184,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'minor_unit_exponent' => 'getMinorUnitExponent'
+        'balance' => 'getBalance'
     ];
 
     /**
@@ -256,9 +244,7 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('minor_unit_exponent', $data ?? [], null);
+        $this->setIfExists('balance', $data ?? [], null);
     }
 
     /**
@@ -304,82 +290,28 @@ class SodacardsDevpublicV1Money implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets amount
+     * Gets balance
      *
-     * @return \Sodacards\Model\Amount|null
+     * @return \Sodacards\Model\SodacardsDevpublicV1Money|null
      */
-    public function getAmount()
+    public function getBalance()
     {
-        return $this->container['amount'];
+        return $this->container['balance'];
     }
 
     /**
-     * Sets amount
+     * Sets balance
      *
-     * @param \Sodacards\Model\Amount|null $amount amount
+     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $balance balance is the reseller's prepaid wallet balance. For a test key it is a  fixed sandbox value, clearly not the production wallet.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setBalance($balance)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($balance)) {
+            throw new \InvalidArgumentException('non-nullable balance cannot be null');
         }
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency currency is the ISO-4217 code, e.g. \"XOF\".
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
-        }
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets minor_unit_exponent
-     *
-     * @return int|null
-     */
-    public function getMinorUnitExponent()
-    {
-        return $this->container['minor_unit_exponent'];
-    }
-
-    /**
-     * Sets minor_unit_exponent
-     *
-     * @param int|null $minor_unit_exponent minor_unit_exponent is the currency's number of decimal places (0 for XOF,  2 for USD): amount divided by 10^minor_unit_exponent is the major-unit value.
-     *
-     * @return self
-     */
-    public function setMinorUnitExponent($minor_unit_exponent)
-    {
-        if (is_null($minor_unit_exponent)) {
-            throw new \InvalidArgumentException('non-nullable minor_unit_exponent cannot be null');
-        }
-        $this->container['minor_unit_exponent'] = $minor_unit_exponent;
+        $this->container['balance'] = $balance;
 
         return $this;
     }

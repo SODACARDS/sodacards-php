@@ -5,8 +5,10 @@
 README.md
 composer.json
 docs/Api/DefaultApi.md
+docs/Api/PublicAPIServiceApi.md
 docs/Model/Amount.md
 docs/Model/SodacardsDevpublicV1DeleteWebhookRequest.md
+docs/Model/SodacardsDevpublicV1GetBalanceResponse.md
 docs/Model/SodacardsDevpublicV1GetOrderRequest.md
 docs/Model/SodacardsDevpublicV1GetOrderResponse.md
 docs/Model/SodacardsDevpublicV1GetProductRequest.md
@@ -36,6 +38,7 @@ docs/Model/SodacardsDevpublicV1RevealedCode.md
 docs/Model/SodacardsDevpublicV1Webhook.md
 git_push.sh
 lib/Api/DefaultApi.php
+lib/Api/PublicAPIServiceApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
@@ -43,6 +46,7 @@ lib/HeaderSelector.php
 lib/Model/Amount.php
 lib/Model/ModelInterface.php
 lib/Model/SodacardsDevpublicV1DeleteWebhookRequest.php
+lib/Model/SodacardsDevpublicV1GetBalanceResponse.php
 lib/Model/SodacardsDevpublicV1GetOrderRequest.php
 lib/Model/SodacardsDevpublicV1GetOrderResponse.php
 lib/Model/SodacardsDevpublicV1GetProductRequest.php
@@ -73,8 +77,10 @@ lib/Model/SodacardsDevpublicV1Webhook.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/DefaultApiTest.php
+test/Api/PublicAPIServiceApiTest.php
 test/Model/AmountTest.php
 test/Model/SodacardsDevpublicV1DeleteWebhookRequestTest.php
+test/Model/SodacardsDevpublicV1GetBalanceResponseTest.php
 test/Model/SodacardsDevpublicV1GetOrderRequestTest.php
 test/Model/SodacardsDevpublicV1GetOrderResponseTest.php
 test/Model/SodacardsDevpublicV1GetProductRequestTest.php

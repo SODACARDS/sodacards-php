@@ -1,6 +1,6 @@
 <?php
 /**
- * SodacardsDevpublicV1MoneyTest
+ * SodacardsDevpublicV1GetBalanceResponseTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace Sodacards\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SodacardsDevpublicV1MoneyTest Class Doc Comment
+ * SodacardsDevpublicV1GetBalanceResponseTest Class Doc Comment
  *
  * @category    Class
- * @description SodacardsDevpublicV1Money
+ * @description SodacardsDevpublicV1GetBalanceResponse
  * @package     Sodacards
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class SodacardsDevpublicV1MoneyTest extends TestCase
+class SodacardsDevpublicV1GetBalanceResponseTest extends TestCase
 {
 
     /**
@@ -71,36 +71,18 @@ class SodacardsDevpublicV1MoneyTest extends TestCase
     }
 
     /**
-     * Test "SodacardsDevpublicV1Money"
+     * Test "SodacardsDevpublicV1GetBalanceResponse"
      */
-    public function testSodacardsDevpublicV1Money()
+    public function testSodacardsDevpublicV1GetBalanceResponse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "balance"
      */
-    public function testPropertyAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "minor_unit_exponent"
-     */
-    public function testPropertyMinorUnitExponent()
+    public function testPropertyBalance()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
