@@ -35,6 +35,8 @@ docs/Model/SodacardsDevpublicV1RegisterWebhookResponse.md
 docs/Model/SodacardsDevpublicV1RevealOrderCodesRequest.md
 docs/Model/SodacardsDevpublicV1RevealOrderCodesResponse.md
 docs/Model/SodacardsDevpublicV1RevealedCode.md
+docs/Model/SodacardsDevpublicV1RotateWebhookSecretRequest.md
+docs/Model/SodacardsDevpublicV1RotateWebhookSecretResponse.md
 docs/Model/SodacardsDevpublicV1Webhook.md
 git_push.sh
 lib/Api/DefaultApi.php
@@ -73,6 +75,8 @@ lib/Model/SodacardsDevpublicV1RegisterWebhookResponse.php
 lib/Model/SodacardsDevpublicV1RevealOrderCodesRequest.php
 lib/Model/SodacardsDevpublicV1RevealOrderCodesResponse.php
 lib/Model/SodacardsDevpublicV1RevealedCode.php
+lib/Model/SodacardsDevpublicV1RotateWebhookSecretRequest.php
+lib/Model/SodacardsDevpublicV1RotateWebhookSecretResponse.php
 lib/Model/SodacardsDevpublicV1Webhook.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
@@ -107,4 +111,6 @@ test/Model/SodacardsDevpublicV1RegisterWebhookResponseTest.php
 test/Model/SodacardsDevpublicV1RevealOrderCodesRequestTest.php
 test/Model/SodacardsDevpublicV1RevealOrderCodesResponseTest.php
 test/Model/SodacardsDevpublicV1RevealedCodeTest.php
+test/Model/SodacardsDevpublicV1RotateWebhookSecretRequestTest.php
+test/Model/SodacardsDevpublicV1RotateWebhookSecretResponseTest.php
 test/Model/SodacardsDevpublicV1WebhookTest.php
