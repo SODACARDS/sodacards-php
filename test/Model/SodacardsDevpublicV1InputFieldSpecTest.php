@@ -1,6 +1,6 @@
 <?php
 /**
- * SodacardsDevpublicV1ProductTest
+ * SodacardsDevpublicV1InputFieldSpecTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace Sodacards\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SodacardsDevpublicV1ProductTest Class Doc Comment
+ * SodacardsDevpublicV1InputFieldSpecTest Class Doc Comment
  *
  * @category    Class
- * @description Product is one sellable item in the reseller catalog. Its id is what an order  line references. It never carries the supplier cost or routing.
+ * @description InputFieldSpec describes one purchase-form field a product requires, so a  developer can build and validate an order line before placing it. Its value is  submitted on OrderLine.input_fields, keyed by this field&#39;s key.
  * @package     Sodacards
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class SodacardsDevpublicV1ProductTest extends TestCase
+class SodacardsDevpublicV1InputFieldSpecTest extends TestCase
 {
 
     /**
@@ -71,99 +71,54 @@ class SodacardsDevpublicV1ProductTest extends TestCase
     }
 
     /**
-     * Test "SodacardsDevpublicV1Product"
+     * Test "SodacardsDevpublicV1InputFieldSpec"
      */
-    public function testSodacardsDevpublicV1Product()
+    public function testSodacardsDevpublicV1InputFieldSpec()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "key"
      */
-    public function testPropertyId()
+    public function testPropertyKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "type"
      */
-    public function testPropertyName()
+    public function testPropertyType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "face_value"
+     * Test attribute "required"
      */
-    public function testPropertyFaceValue()
+    public function testPropertyRequired()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "price"
+     * Test attribute "regex"
      */
-    public function testPropertyPrice()
+    public function testPropertyRegex()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "strike_price"
+     * Test attribute "options"
      */
-    public function testPropertyStrikePrice()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "bonus"
-     */
-    public function testPropertyBonus()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "min_quantity"
-     */
-    public function testPropertyMinQuantity()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "max_quantity"
-     */
-    public function testPropertyMaxQuantity()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "purchasable"
-     */
-    public function testPropertyPurchasable()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "input_fields"
-     */
-    public function testPropertyInputFields()
+    public function testPropertyOptions()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

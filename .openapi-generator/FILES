@@ -13,6 +13,8 @@ docs/Model/SodacardsDevpublicV1GetOrderRequest.md
 docs/Model/SodacardsDevpublicV1GetOrderResponse.md
 docs/Model/SodacardsDevpublicV1GetProductRequest.md
 docs/Model/SodacardsDevpublicV1GetProductResponse.md
+docs/Model/SodacardsDevpublicV1InputFieldOption.md
+docs/Model/SodacardsDevpublicV1InputFieldSpec.md
 docs/Model/SodacardsDevpublicV1ListCatalogRequest.md
 docs/Model/SodacardsDevpublicV1ListCatalogResponse.md
 docs/Model/SodacardsDevpublicV1ListOrdersRequest.md
@@ -53,6 +55,8 @@ lib/Model/SodacardsDevpublicV1GetOrderRequest.php
 lib/Model/SodacardsDevpublicV1GetOrderResponse.php
 lib/Model/SodacardsDevpublicV1GetProductRequest.php
 lib/Model/SodacardsDevpublicV1GetProductResponse.php
+lib/Model/SodacardsDevpublicV1InputFieldOption.php
+lib/Model/SodacardsDevpublicV1InputFieldSpec.php
 lib/Model/SodacardsDevpublicV1ListCatalogRequest.php
 lib/Model/SodacardsDevpublicV1ListCatalogResponse.php
 lib/Model/SodacardsDevpublicV1ListOrdersRequest.php
@@ -89,6 +93,8 @@ test/Model/SodacardsDevpublicV1GetOrderRequestTest.php
 test/Model/SodacardsDevpublicV1GetOrderResponseTest.php
 test/Model/SodacardsDevpublicV1GetProductRequestTest.php
 test/Model/SodacardsDevpublicV1GetProductResponseTest.php
+test/Model/SodacardsDevpublicV1InputFieldOptionTest.php
+test/Model/SodacardsDevpublicV1InputFieldSpecTest.php
 test/Model/SodacardsDevpublicV1ListCatalogRequestTest.php
 test/Model/SodacardsDevpublicV1ListCatalogResponseTest.php
 test/Model/SodacardsDevpublicV1ListOrdersRequestTest.php

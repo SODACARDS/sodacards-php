@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **min_quantity** | **int** | min_quantity and max_quantity bound how many units an order line may buy. | [optional]
 **max_quantity** | **int** |  | [optional]
 **purchasable** | **bool** | purchasable is true when the item has a price and can be ordered now. | [optional]
+**input_fields** | [**\Sodacards\Model\SodacardsDevpublicV1InputFieldSpec[]**](SodacardsDevpublicV1InputFieldSpec.md) | input_fields are the purchase-form fields this product requires. Empty for a  gift card that needs nothing; present for a game top-up. Read them to learn  which values to submit on the order line (OrderLine.input_fields, keyed by  each field&#39;s key) and to validate them before placing the order. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,6 +1,6 @@
 <?php
 /**
- * SodacardsDevpublicV1Product
+ * SodacardsDevpublicV1InputFieldSpec
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \Sodacards\ObjectSerializer;
 
 /**
- * SodacardsDevpublicV1Product Class Doc Comment
+ * SodacardsDevpublicV1InputFieldSpec Class Doc Comment
  *
  * @category Class
- * @description Product is one sellable item in the reseller catalog. Its id is what an order  line references. It never carries the supplier cost or routing.
+ * @description InputFieldSpec describes one purchase-form field a product requires, so a  developer can build and validate an order line before placing it. Its value is  submitted on OrderLine.input_fields, keyed by this field&#39;s key.
  * @package  Sodacards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonSerializable
+class SodacardsDevpublicV1InputFieldSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      *
      * @var string
      */
-    protected static $openAPIModelName = 'sodacards.devpublic.v1.Product';
+    protected static $openAPIModelName = 'sodacards.devpublic.v1.InputFieldSpec';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'face_value' => '\Sodacards\Model\SodacardsDevpublicV1ProductFaceValue',
-        'price' => '\Sodacards\Model\SodacardsDevpublicV1Money',
-        'strike_price' => '\Sodacards\Model\SodacardsDevpublicV1Money',
-        'bonus' => 'string',
-        'min_quantity' => 'int',
-        'max_quantity' => 'int',
-        'purchasable' => 'bool',
-        'input_fields' => '\Sodacards\Model\SodacardsDevpublicV1InputFieldSpec[]'
+        'key' => 'string',
+        'type' => 'string',
+        'required' => 'bool',
+        'regex' => 'string',
+        'options' => '\Sodacards\Model\SodacardsDevpublicV1InputFieldOption[]'
     ];
 
     /**
@@ -78,16 +73,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'face_value' => null,
-        'price' => null,
-        'strike_price' => null,
-        'bonus' => null,
-        'min_quantity' => 'int32',
-        'max_quantity' => 'int32',
-        'purchasable' => null,
-        'input_fields' => null
+        'key' => null,
+        'type' => null,
+        'required' => null,
+        'regex' => null,
+        'options' => null
     ];
 
     /**
@@ -96,16 +86,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'face_value' => false,
-        'price' => false,
-        'strike_price' => false,
-        'bonus' => false,
-        'min_quantity' => false,
-        'max_quantity' => false,
-        'purchasable' => false,
-        'input_fields' => false
+        'key' => false,
+        'type' => false,
+        'required' => false,
+        'regex' => false,
+        'options' => false
     ];
 
     /**
@@ -194,16 +179,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'face_value' => 'faceValue',
-        'price' => 'price',
-        'strike_price' => 'strikePrice',
-        'bonus' => 'bonus',
-        'min_quantity' => 'minQuantity',
-        'max_quantity' => 'maxQuantity',
-        'purchasable' => 'purchasable',
-        'input_fields' => 'inputFields'
+        'key' => 'key',
+        'type' => 'type',
+        'required' => 'required',
+        'regex' => 'regex',
+        'options' => 'options'
     ];
 
     /**
@@ -212,16 +192,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'face_value' => 'setFaceValue',
-        'price' => 'setPrice',
-        'strike_price' => 'setStrikePrice',
-        'bonus' => 'setBonus',
-        'min_quantity' => 'setMinQuantity',
-        'max_quantity' => 'setMaxQuantity',
-        'purchasable' => 'setPurchasable',
-        'input_fields' => 'setInputFields'
+        'key' => 'setKey',
+        'type' => 'setType',
+        'required' => 'setRequired',
+        'regex' => 'setRegex',
+        'options' => 'setOptions'
     ];
 
     /**
@@ -230,16 +205,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'face_value' => 'getFaceValue',
-        'price' => 'getPrice',
-        'strike_price' => 'getStrikePrice',
-        'bonus' => 'getBonus',
-        'min_quantity' => 'getMinQuantity',
-        'max_quantity' => 'getMaxQuantity',
-        'purchasable' => 'getPurchasable',
-        'input_fields' => 'getInputFields'
+        'key' => 'getKey',
+        'type' => 'getType',
+        'required' => 'getRequired',
+        'regex' => 'getRegex',
+        'options' => 'getOptions'
     ];
 
     /**
@@ -299,16 +269,11 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('face_value', $data ?? [], null);
-        $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('strike_price', $data ?? [], null);
-        $this->setIfExists('bonus', $data ?? [], null);
-        $this->setIfExists('min_quantity', $data ?? [], null);
-        $this->setIfExists('max_quantity', $data ?? [], null);
-        $this->setIfExists('purchasable', $data ?? [], null);
-        $this->setIfExists('input_fields', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('required', $data ?? [], null);
+        $this->setIfExists('regex', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
     }
 
     /**
@@ -354,271 +319,136 @@ class SodacardsDevpublicV1Product implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
+     * Gets key
      *
      * @return string|null
      */
-    public function getId()
+    public function getKey()
     {
-        return $this->container['id'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets id
+     * Sets key
      *
-     * @param string|null $id id identifies the product; use it to place an order for this item.
+     * @param string|null $key key is the field's machine name and the key to use in  OrderLine.input_fields, e.g. \"player_id\".
      *
      * @return self
      */
-    public function setId($id)
+    public function setKey($key)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets type
      *
      * @return string|null
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string|null $name name is the human-readable product name.
+     * @param string|null $type type is how to render and validate the value: \"text\", \"number\" or \"select\".
      *
      * @return self
      */
-    public function setName($name)
+    public function setType($type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets face_value
-     *
-     * @return \Sodacards\Model\SodacardsDevpublicV1ProductFaceValue|null
-     */
-    public function getFaceValue()
-    {
-        return $this->container['face_value'];
-    }
-
-    /**
-     * Sets face_value
-     *
-     * @param \Sodacards\Model\SodacardsDevpublicV1ProductFaceValue|null $face_value face_value is the nominal value printed on the item (e.g. a 10 USD card),  which may differ from the currency the reseller pays in.
-     *
-     * @return self
-     */
-    public function setFaceValue($face_value)
-    {
-        if (is_null($face_value)) {
-            throw new \InvalidArgumentException('non-nullable face_value cannot be null');
-        }
-        $this->container['face_value'] = $face_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return \Sodacards\Model\SodacardsDevpublicV1Money|null
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $price price is what the reseller pays, in the currency of Money. It is absent when the item is not  yet priced (listed but not purchasable).
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        if (is_null($price)) {
-            throw new \InvalidArgumentException('non-nullable price cannot be null');
-        }
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets strike_price
-     *
-     * @return \Sodacards\Model\SodacardsDevpublicV1Money|null
-     */
-    public function getStrikePrice()
-    {
-        return $this->container['strike_price'];
-    }
-
-    /**
-     * Sets strike_price
-     *
-     * @param \Sodacards\Model\SodacardsDevpublicV1Money|null $strike_price strike_price is an optional reference (pre-discount) price, in the currency of Money, for  display. Absent when there is none.
-     *
-     * @return self
-     */
-    public function setStrikePrice($strike_price)
-    {
-        if (is_null($strike_price)) {
-            throw new \InvalidArgumentException('non-nullable strike_price cannot be null');
-        }
-        $this->container['strike_price'] = $strike_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets bonus
-     *
-     * @return string|null
-     */
-    public function getBonus()
-    {
-        return $this->container['bonus'];
-    }
-
-    /**
-     * Sets bonus
-     *
-     * @param string|null $bonus bonus describes any extra value granted with the item, e.g. \"+10%\". Empty  when there is none.
-     *
-     * @return self
-     */
-    public function setBonus($bonus)
-    {
-        if (is_null($bonus)) {
-            throw new \InvalidArgumentException('non-nullable bonus cannot be null');
-        }
-        $this->container['bonus'] = $bonus;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_quantity
-     *
-     * @return int|null
-     */
-    public function getMinQuantity()
-    {
-        return $this->container['min_quantity'];
-    }
-
-    /**
-     * Sets min_quantity
-     *
-     * @param int|null $min_quantity min_quantity and max_quantity bound how many units an order line may buy.
-     *
-     * @return self
-     */
-    public function setMinQuantity($min_quantity)
-    {
-        if (is_null($min_quantity)) {
-            throw new \InvalidArgumentException('non-nullable min_quantity cannot be null');
-        }
-        $this->container['min_quantity'] = $min_quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_quantity
-     *
-     * @return int|null
-     */
-    public function getMaxQuantity()
-    {
-        return $this->container['max_quantity'];
-    }
-
-    /**
-     * Sets max_quantity
-     *
-     * @param int|null $max_quantity max_quantity
-     *
-     * @return self
-     */
-    public function setMaxQuantity($max_quantity)
-    {
-        if (is_null($max_quantity)) {
-            throw new \InvalidArgumentException('non-nullable max_quantity cannot be null');
-        }
-        $this->container['max_quantity'] = $max_quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets purchasable
+     * Gets required
      *
      * @return bool|null
      */
-    public function getPurchasable()
+    public function getRequired()
     {
-        return $this->container['purchasable'];
+        return $this->container['required'];
     }
 
     /**
-     * Sets purchasable
+     * Sets required
      *
-     * @param bool|null $purchasable purchasable is true when the item has a price and can be ordered now.
+     * @param bool|null $required required is true when an order line for this product must carry this field.
      *
      * @return self
      */
-    public function setPurchasable($purchasable)
+    public function setRequired($required)
     {
-        if (is_null($purchasable)) {
-            throw new \InvalidArgumentException('non-nullable purchasable cannot be null');
+        if (is_null($required)) {
+            throw new \InvalidArgumentException('non-nullable required cannot be null');
         }
-        $this->container['purchasable'] = $purchasable;
+        $this->container['required'] = $required;
 
         return $this;
     }
 
     /**
-     * Gets input_fields
+     * Gets regex
      *
-     * @return \Sodacards\Model\SodacardsDevpublicV1InputFieldSpec[]|null
+     * @return string|null
      */
-    public function getInputFields()
+    public function getRegex()
     {
-        return $this->container['input_fields'];
+        return $this->container['regex'];
     }
 
     /**
-     * Sets input_fields
+     * Sets regex
      *
-     * @param \Sodacards\Model\SodacardsDevpublicV1InputFieldSpec[]|null $input_fields input_fields are the purchase-form fields this product requires. Empty for a  gift card that needs nothing; present for a game top-up. Read them to learn  which values to submit on the order line (OrderLine.input_fields, keyed by  each field's key) and to validate them before placing the order.
+     * @param string|null $regex regex, when present, is a regular expression the submitted value must match  (text and number fields). Empty when there is no pattern constraint.
      *
      * @return self
      */
-    public function setInputFields($input_fields)
+    public function setRegex($regex)
     {
-        if (is_null($input_fields)) {
-            throw new \InvalidArgumentException('non-nullable input_fields cannot be null');
+        if (is_null($regex)) {
+            throw new \InvalidArgumentException('non-nullable regex cannot be null');
         }
-        $this->container['input_fields'] = $input_fields;
+        $this->container['regex'] = $regex;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Sodacards\Model\SodacardsDevpublicV1InputFieldOption[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Sodacards\Model\SodacardsDevpublicV1InputFieldOption[]|null $options options are the allowed values of a \"select\" field, in display order. Empty  for text and number fields.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
 
         return $this;
     }
