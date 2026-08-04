@@ -74,7 +74,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for deleteWebhook
      *
-     * DeleteWebhook.
+     * Delete a webhook endpoint.
      *
      */
     public function testDeleteWebhook()
@@ -84,9 +84,21 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for getBalance
+     *
+     * Get wallet balance.
+     *
+     */
+    public function testGetBalance()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getOrder
      *
-     * GetOrder.
+     * Get an order.
      *
      */
     public function testGetOrder()
@@ -98,7 +110,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for getProduct
      *
-     * GetProduct.
+     * Get a product.
      *
      */
     public function testGetProduct()
@@ -110,7 +122,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for listCatalog
      *
-     * ListCatalog.
+     * List catalog products.
      *
      */
     public function testListCatalog()
@@ -122,7 +134,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for listOrders
      *
-     * ListOrders.
+     * List orders.
      *
      */
     public function testListOrders()
@@ -134,7 +146,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for listWebhooks
      *
-     * ListWebhooks.
+     * List webhook endpoints.
      *
      */
     public function testListWebhooks()
@@ -158,7 +170,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for placeOrder
      *
-     * PlaceOrder.
+     * Place an order.
      *
      */
     public function testPlaceOrder()
@@ -170,7 +182,7 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for registerWebhook
      *
-     * RegisterWebhook.
+     * Register a webhook endpoint.
      *
      */
     public function testRegisterWebhook()
@@ -182,10 +194,22 @@ class DefaultApiTest extends TestCase
     /**
      * Test case for revealOrderCodes
      *
-     * RevealOrderCodes.
+     * Reveal order codes.
      *
      */
     public function testRevealOrderCodes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for rotateWebhookSecret
+     *
+     * Rotate a webhook signing secret.
+     *
+     */
+    public function testRotateWebhookSecret()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

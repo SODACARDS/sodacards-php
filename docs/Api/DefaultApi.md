@@ -6,16 +6,18 @@ All URIs are relative to https://api.sodacards.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteWebhook()**](DefaultApi.md#deleteWebhook) | **DELETE** /v1/webhooks/{id} | DeleteWebhook |
-| [**getOrder()**](DefaultApi.md#getOrder) | **GET** /v1/orders/{id} | GetOrder |
-| [**getProduct()**](DefaultApi.md#getProduct) | **GET** /v1/products/{id} | GetProduct |
-| [**listCatalog()**](DefaultApi.md#listCatalog) | **GET** /v1/catalog | ListCatalog |
-| [**listOrders()**](DefaultApi.md#listOrders) | **GET** /v1/orders | ListOrders |
-| [**listWebhooks()**](DefaultApi.md#listWebhooks) | **GET** /v1/webhooks | ListWebhooks |
+| [**deleteWebhook()**](DefaultApi.md#deleteWebhook) | **DELETE** /v1/webhooks/{id} | Delete a webhook endpoint |
+| [**getBalance()**](DefaultApi.md#getBalance) | **GET** /v1/balance | Get wallet balance |
+| [**getOrder()**](DefaultApi.md#getOrder) | **GET** /v1/orders/{id} | Get an order |
+| [**getProduct()**](DefaultApi.md#getProduct) | **GET** /v1/products/{id} | Get a product |
+| [**listCatalog()**](DefaultApi.md#listCatalog) | **GET** /v1/catalog | List catalog products |
+| [**listOrders()**](DefaultApi.md#listOrders) | **GET** /v1/orders | List orders |
+| [**listWebhooks()**](DefaultApi.md#listWebhooks) | **GET** /v1/webhooks | List webhook endpoints |
 | [**ping()**](DefaultApi.md#ping) | **GET** /v1/ping | Ping |
-| [**placeOrder()**](DefaultApi.md#placeOrder) | **POST** /v1/orders | PlaceOrder |
-| [**registerWebhook()**](DefaultApi.md#registerWebhook) | **POST** /v1/webhooks | RegisterWebhook |
-| [**revealOrderCodes()**](DefaultApi.md#revealOrderCodes) | **GET** /v1/orders/{order_id}/codes | RevealOrderCodes |
+| [**placeOrder()**](DefaultApi.md#placeOrder) | **POST** /v1/orders | Place an order |
+| [**registerWebhook()**](DefaultApi.md#registerWebhook) | **POST** /v1/webhooks | Register a webhook endpoint |
+| [**revealOrderCodes()**](DefaultApi.md#revealOrderCodes) | **GET** /v1/orders/{order_id}/codes | Reveal order codes |
+| [**rotateWebhookSecret()**](DefaultApi.md#rotateWebhookSecret) | **POST** /v1/webhooks/{id}/rotate | Rotate a webhook signing secret |
 
 
 ## `deleteWebhook()`
@@ -24,7 +26,7 @@ All URIs are relative to https://api.sodacards.com, except if the operation defi
 deleteWebhook($id): object
 ```
 
-DeleteWebhook
+Delete a webhook endpoint
 
 DeleteWebhook removes a webhook endpoint.
 
@@ -80,13 +82,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getBalance()`
+
+```php
+getBalance(): \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse
+```
+
+Get wallet balance
+
+GetBalance returns the reseller's prepaid wallet balance, the same funds a  live order is settled from. It reads only the caller's own wallet. A test key  reads a fixed sandbox balance, never the real one, so a test integration can  exercise the read without seeing production funds.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKeyAuth
+$config = Sodacards\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Sodacards\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
+$apiInstance = new Sodacards\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBalance();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getBalance: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse**](../Model/SodacardsDevpublicV1GetBalanceResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getOrder()`
 
 ```php
 getOrder($id): \Sodacards\Model\SodacardsDevpublicV1GetOrderResponse
 ```
 
-GetOrder
+Get an order
 
 GetOrder returns one of the reseller's orders by id, with its lines and  current status. A live key reads live orders and a test key reads its own  sandbox orders; an id that is not the caller's is reported as not found.
 
@@ -148,7 +209,7 @@ try {
 getProduct($id): \Sodacards\Model\SodacardsDevpublicV1GetProductResponse
 ```
 
-GetProduct
+Get a product
 
 GetProduct returns a single product by its id, priced for the reseller. The  id is the one carried by a catalog entry. A product the reseller may not see  (unlisted, hidden or inactive) is reported as not found, so an id cannot be  probed to learn what exists outside the reseller's catalog.
 
@@ -210,7 +271,7 @@ try {
 listCatalog($limit, $cursor): \Sodacards\Model\SodacardsDevpublicV1ListCatalogResponse
 ```
 
-ListCatalog
+List catalog products
 
 ListCatalog returns a page of the products the reseller may sell, each with  the reseller's price. It is cursor-paginated: pass next_cursor from the  previous page to fetch the next. A product's id is the identifier used to  order it.
 
@@ -274,7 +335,7 @@ try {
 listOrders($limit, $cursor, $reference): \Sodacards\Model\SodacardsDevpublicV1ListOrdersResponse
 ```
 
-ListOrders
+List orders
 
 ListOrders returns a page of the reseller's orders, newest first. It is  cursor-paginated: pass next_cursor from the previous page to fetch the next.  A live key lists live orders and a test key lists its own sandbox orders.
 
@@ -340,7 +401,7 @@ try {
 listWebhooks(): \Sodacards\Model\SodacardsDevpublicV1ListWebhooksResponse
 ```
 
-ListWebhooks
+List webhook endpoints
 
 ListWebhooks returns the reseller's registered webhook endpoints. It never  returns their signing secrets.
 
@@ -458,7 +519,7 @@ This endpoint does not need any parameter.
 placeOrder($sodacards_devpublic_v1_place_order_request): \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse
 ```
 
-PlaceOrder
+Place an order
 
 PlaceOrder buys one or more products, settled from the reseller's prepaid  wallet. It is asynchronous: the order is accepted and fulfilled in the  background, so the response carries the order id and a status to poll. The  request MUST carry an Idempotency-Key header, so a retried request never  places a second order.
 
@@ -520,7 +581,7 @@ try {
 registerWebhook($sodacards_devpublic_v1_register_webhook_request): \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookResponse
 ```
 
-RegisterWebhook
+Register a webhook endpoint
 
 RegisterWebhook registers a URL to receive signed event deliveries. The URL  must be HTTPS and publicly routable. The response carries the signing secret  once; store it, as it is never shown again.
 
@@ -582,7 +643,7 @@ try {
 revealOrderCodes($order_id): \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse
 ```
 
-RevealOrderCodes
+Reveal order codes
 
 RevealOrderCodes returns the delivered codes of a completed order. Codes are  available once the order is completed; a still-processing order reports that  it is not ready. Reveals are rate-limited per order.
 
@@ -624,6 +685,68 @@ try {
 ### Return type
 
 [**\Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse**](../Model/SodacardsDevpublicV1RevealOrderCodesResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `rotateWebhookSecret()`
+
+```php
+rotateWebhookSecret($id): \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse
+```
+
+Rotate a webhook signing secret
+
+RotateWebhookSecret issues a new signing secret for an endpoint without  interrupting deliveries: the new secret is returned once, and the previous one  stays valid until prev_secret_expires_at. During that window deliveries are  signed with both, so switch your verification to the new secret before the  deadline. Rotating again replaces the outgoing secret rather than adding a  third, so at most two secrets are ever accepted at once.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKeyAuth
+$config = Sodacards\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Sodacards\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
+$apiInstance = new Sodacards\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | id is the webhook endpoint whose signing secret to rotate.
+
+try {
+    $result = $apiInstance->rotateWebhookSecret($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->rotateWebhookSecret: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| id is the webhook endpoint whose signing secret to rotate. | |
+
+### Return type
+
+[**\Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse**](../Model/SodacardsDevpublicV1RotateWebhookSecretResponse.md)
 
 ### Authorization
 

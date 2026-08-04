@@ -77,6 +77,9 @@ class DefaultApi
         'deleteWebhook' => [
             'application/json',
         ],
+        'getBalance' => [
+            'application/json',
+        ],
         'getOrder' => [
             'application/json',
         ],
@@ -102,6 +105,9 @@ class DefaultApi
             'application/json',
         ],
         'revealOrderCodes' => [
+            'application/json',
+        ],
+        'rotateWebhookSecret' => [
             'application/json',
         ],
     ];
@@ -155,7 +161,7 @@ class DefaultApi
     /**
      * Operation deleteWebhook
      *
-     * DeleteWebhook
+     * Delete a webhook endpoint
      *
      * @param  string $id id is the webhook endpoint to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhook'] to see the possible values for this operation
@@ -173,7 +179,7 @@ class DefaultApi
     /**
      * Operation deleteWebhookWithHttpInfo
      *
-     * DeleteWebhook
+     * Delete a webhook endpoint
      *
      * @param  string $id id is the webhook endpoint to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhook'] to see the possible values for this operation
@@ -258,7 +264,7 @@ class DefaultApi
     /**
      * Operation deleteWebhookAsync
      *
-     * DeleteWebhook
+     * Delete a webhook endpoint
      *
      * @param  string $id id is the webhook endpoint to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhook'] to see the possible values for this operation
@@ -279,7 +285,7 @@ class DefaultApi
     /**
      * Operation deleteWebhookAsyncWithHttpInfo
      *
-     * DeleteWebhook
+     * Delete a webhook endpoint
      *
      * @param  string $id id is the webhook endpoint to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhook'] to see the possible values for this operation
@@ -426,9 +432,262 @@ class DefaultApi
     }
 
     /**
+     * Operation getBalance
+     *
+     * Get wallet balance
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
+     *
+     * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse
+     */
+    public function getBalance(string $contentType = self::contentTypes['getBalance'][0])
+    {
+        list($response) = $this->getBalanceWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getBalanceWithHttpInfo
+     *
+     * Get wallet balance
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
+     *
+     * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getBalanceWithHttpInfo(string $contentType = self::contentTypes['getBalance'][0])
+    {
+        $request = $this->getBalanceRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getBalanceAsync
+     *
+     * Get wallet balance
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalanceAsync(string $contentType = self::contentTypes['getBalance'][0])
+    {
+        return $this->getBalanceAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getBalanceAsyncWithHttpInfo
+     *
+     * Get wallet balance
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalanceAsyncWithHttpInfo(string $contentType = self::contentTypes['getBalance'][0])
+    {
+        $returnType = '\Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse';
+        $request = $this->getBalanceRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getBalance'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getBalanceRequest(string $contentType = self::contentTypes['getBalance'][0])
+    {
+
+
+        $resourcePath = '/v1/balance';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getOrder
      *
-     * GetOrder
+     * Get an order
      *
      * @param  string $id id is the order id, from PlaceOrder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
@@ -446,7 +705,7 @@ class DefaultApi
     /**
      * Operation getOrderWithHttpInfo
      *
-     * GetOrder
+     * Get an order
      *
      * @param  string $id id is the order id, from PlaceOrder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
@@ -531,7 +790,7 @@ class DefaultApi
     /**
      * Operation getOrderAsync
      *
-     * GetOrder
+     * Get an order
      *
      * @param  string $id id is the order id, from PlaceOrder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
@@ -552,7 +811,7 @@ class DefaultApi
     /**
      * Operation getOrderAsyncWithHttpInfo
      *
-     * GetOrder
+     * Get an order
      *
      * @param  string $id id is the order id, from PlaceOrder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
@@ -701,7 +960,7 @@ class DefaultApi
     /**
      * Operation getProduct
      *
-     * GetProduct
+     * Get a product
      *
      * @param  string $id id is the product id, taken from a catalog entry. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProduct'] to see the possible values for this operation
@@ -719,7 +978,7 @@ class DefaultApi
     /**
      * Operation getProductWithHttpInfo
      *
-     * GetProduct
+     * Get a product
      *
      * @param  string $id id is the product id, taken from a catalog entry. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProduct'] to see the possible values for this operation
@@ -804,7 +1063,7 @@ class DefaultApi
     /**
      * Operation getProductAsync
      *
-     * GetProduct
+     * Get a product
      *
      * @param  string $id id is the product id, taken from a catalog entry. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProduct'] to see the possible values for this operation
@@ -825,7 +1084,7 @@ class DefaultApi
     /**
      * Operation getProductAsyncWithHttpInfo
      *
-     * GetProduct
+     * Get a product
      *
      * @param  string $id id is the product id, taken from a catalog entry. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProduct'] to see the possible values for this operation
@@ -974,7 +1233,7 @@ class DefaultApi
     /**
      * Operation listCatalog
      *
-     * ListCatalog
+     * List catalog products
      *
      * @param  int|null $limit limit is the maximum number of products to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -993,7 +1252,7 @@ class DefaultApi
     /**
      * Operation listCatalogWithHttpInfo
      *
-     * ListCatalog
+     * List catalog products
      *
      * @param  int|null $limit limit is the maximum number of products to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1079,7 +1338,7 @@ class DefaultApi
     /**
      * Operation listCatalogAsync
      *
-     * ListCatalog
+     * List catalog products
      *
      * @param  int|null $limit limit is the maximum number of products to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1101,7 +1360,7 @@ class DefaultApi
     /**
      * Operation listCatalogAsyncWithHttpInfo
      *
-     * ListCatalog
+     * List catalog products
      *
      * @param  int|null $limit limit is the maximum number of products to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1257,7 +1516,7 @@ class DefaultApi
     /**
      * Operation listOrders
      *
-     * ListOrders
+     * List orders
      *
      * @param  int|null $limit limit is the maximum number of orders to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1277,7 +1536,7 @@ class DefaultApi
     /**
      * Operation listOrdersWithHttpInfo
      *
-     * ListOrders
+     * List orders
      *
      * @param  int|null $limit limit is the maximum number of orders to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1364,7 +1623,7 @@ class DefaultApi
     /**
      * Operation listOrdersAsync
      *
-     * ListOrders
+     * List orders
      *
      * @param  int|null $limit limit is the maximum number of orders to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1387,7 +1646,7 @@ class DefaultApi
     /**
      * Operation listOrdersAsyncWithHttpInfo
      *
-     * ListOrders
+     * List orders
      *
      * @param  int|null $limit limit is the maximum number of orders to return (1..100). Zero applies the  default page size. (optional)
      * @param  string|null $cursor cursor is the next_cursor of the previous page. Empty for the first page. (optional)
@@ -1555,7 +1814,7 @@ class DefaultApi
     /**
      * Operation listWebhooks
      *
-     * ListWebhooks
+     * List webhook endpoints
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWebhooks'] to see the possible values for this operation
      *
@@ -1572,7 +1831,7 @@ class DefaultApi
     /**
      * Operation listWebhooksWithHttpInfo
      *
-     * ListWebhooks
+     * List webhook endpoints
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWebhooks'] to see the possible values for this operation
      *
@@ -1656,7 +1915,7 @@ class DefaultApi
     /**
      * Operation listWebhooksAsync
      *
-     * ListWebhooks
+     * List webhook endpoints
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWebhooks'] to see the possible values for this operation
      *
@@ -1676,7 +1935,7 @@ class DefaultApi
     /**
      * Operation listWebhooksAsyncWithHttpInfo
      *
-     * ListWebhooks
+     * List webhook endpoints
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWebhooks'] to see the possible values for this operation
      *
@@ -2061,7 +2320,7 @@ class DefaultApi
     /**
      * Operation placeOrder
      *
-     * PlaceOrder
+     * Place an order
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
@@ -2079,7 +2338,7 @@ class DefaultApi
     /**
      * Operation placeOrderWithHttpInfo
      *
-     * PlaceOrder
+     * Place an order
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
@@ -2164,7 +2423,7 @@ class DefaultApi
     /**
      * Operation placeOrderAsync
      *
-     * PlaceOrder
+     * Place an order
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
@@ -2185,7 +2444,7 @@ class DefaultApi
     /**
      * Operation placeOrderAsyncWithHttpInfo
      *
-     * PlaceOrder
+     * Place an order
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
@@ -2333,7 +2592,7 @@ class DefaultApi
     /**
      * Operation registerWebhook
      *
-     * RegisterWebhook
+     * Register a webhook endpoint
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookRequest $sodacards_devpublic_v1_register_webhook_request sodacards_devpublic_v1_register_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerWebhook'] to see the possible values for this operation
@@ -2351,7 +2610,7 @@ class DefaultApi
     /**
      * Operation registerWebhookWithHttpInfo
      *
-     * RegisterWebhook
+     * Register a webhook endpoint
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookRequest $sodacards_devpublic_v1_register_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerWebhook'] to see the possible values for this operation
@@ -2436,7 +2695,7 @@ class DefaultApi
     /**
      * Operation registerWebhookAsync
      *
-     * RegisterWebhook
+     * Register a webhook endpoint
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookRequest $sodacards_devpublic_v1_register_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerWebhook'] to see the possible values for this operation
@@ -2457,7 +2716,7 @@ class DefaultApi
     /**
      * Operation registerWebhookAsyncWithHttpInfo
      *
-     * RegisterWebhook
+     * Register a webhook endpoint
      *
      * @param  \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookRequest $sodacards_devpublic_v1_register_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerWebhook'] to see the possible values for this operation
@@ -2605,7 +2864,7 @@ class DefaultApi
     /**
      * Operation revealOrderCodes
      *
-     * RevealOrderCodes
+     * Reveal order codes
      *
      * @param  string $order_id order_id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
@@ -2623,7 +2882,7 @@ class DefaultApi
     /**
      * Operation revealOrderCodesWithHttpInfo
      *
-     * RevealOrderCodes
+     * Reveal order codes
      *
      * @param  string $order_id order_id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
@@ -2708,7 +2967,7 @@ class DefaultApi
     /**
      * Operation revealOrderCodesAsync
      *
-     * RevealOrderCodes
+     * Reveal order codes
      *
      * @param  string $order_id order_id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
@@ -2729,7 +2988,7 @@ class DefaultApi
     /**
      * Operation revealOrderCodesAsyncWithHttpInfo
      *
-     * RevealOrderCodes
+     * Reveal order codes
      *
      * @param  string $order_id order_id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
@@ -2869,6 +3128,279 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation rotateWebhookSecret
+     *
+     * Rotate a webhook signing secret
+     *
+     * @param  string $id id is the webhook endpoint whose signing secret to rotate. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rotateWebhookSecret'] to see the possible values for this operation
+     *
+     * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse
+     */
+    public function rotateWebhookSecret($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
+    {
+        list($response) = $this->rotateWebhookSecretWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation rotateWebhookSecretWithHttpInfo
+     *
+     * Rotate a webhook signing secret
+     *
+     * @param  string $id id is the webhook endpoint whose signing secret to rotate. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rotateWebhookSecret'] to see the possible values for this operation
+     *
+     * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function rotateWebhookSecretWithHttpInfo($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
+    {
+        $request = $this->rotateWebhookSecretRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation rotateWebhookSecretAsync
+     *
+     * Rotate a webhook signing secret
+     *
+     * @param  string $id id is the webhook endpoint whose signing secret to rotate. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rotateWebhookSecret'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rotateWebhookSecretAsync($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
+    {
+        return $this->rotateWebhookSecretAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation rotateWebhookSecretAsyncWithHttpInfo
+     *
+     * Rotate a webhook signing secret
+     *
+     * @param  string $id id is the webhook endpoint whose signing secret to rotate. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rotateWebhookSecret'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rotateWebhookSecretAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
+    {
+        $returnType = '\Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse';
+        $request = $this->rotateWebhookSecretRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'rotateWebhookSecret'
+     *
+     * @param  string $id id is the webhook endpoint whose signing secret to rotate. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rotateWebhookSecret'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function rotateWebhookSecretRequest($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling rotateWebhookSecret'
+            );
+        }
+
+
+        $resourcePath = '/v1/webhooks/{id}/rotate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{id}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

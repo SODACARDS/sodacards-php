@@ -344,7 +344,7 @@ class SodacardsDevpublicV1PlacedOrder implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param string|null $status status is the order's current state, e.g. \"pending\", \"processing\",  \"completed\", \"partially_completed\", \"failed\" or \"refunded\".
+     * @param string|null $status status is the order's current state: \"pending\", \"processing\", \"completed\",  \"failed\" or \"refunded\".
      *
      * @return self
      */
