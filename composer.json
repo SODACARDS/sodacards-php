@@ -1,5 +1,4 @@
 {
-  "name": "sodacards/sdk",
   "description": "The official PHP SDK for the SODACARDS Developer API.",
   "keywords": [
     "sodacards",

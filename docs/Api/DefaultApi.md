@@ -76,7 +76,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -197,7 +197,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -259,7 +259,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -323,7 +323,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -389,7 +389,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -448,7 +448,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -507,7 +507,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -516,7 +516,7 @@ This endpoint does not need any parameter.
 ## `placeOrder()`
 
 ```php
-placeOrder($sodacards_devpublic_v1_place_order_request): \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse
+placeOrder($idempotency_key, $sodacards_devpublic_v1_place_order_request): \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse
 ```
 
 Place an order
@@ -542,10 +542,11 @@ $apiInstance = new Sodacards\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+$idempotency_key = 'idempotency_key_example'; // string | A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order.
 $sodacards_devpublic_v1_place_order_request = new \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest(); // \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest
 
 try {
-    $result = $apiInstance->placeOrder($sodacards_devpublic_v1_place_order_request);
+    $result = $apiInstance->placeOrder($idempotency_key, $sodacards_devpublic_v1_place_order_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->placeOrder: ', $e->getMessage(), PHP_EOL;
@@ -556,6 +557,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **idempotency_key** | **string**| A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. | |
 | **sodacards_devpublic_v1_place_order_request** | [**\Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest**](../Model/SodacardsDevpublicV1PlaceOrderRequest.md)|  | |
 
 ### Return type
@@ -569,7 +571,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -631,7 +633,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -693,7 +695,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -755,7 +757,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
