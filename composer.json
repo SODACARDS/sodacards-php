@@ -38,6 +38,7 @@
       "Sodacards\\Test\\": "test/"
     }
   },
+  "name": "sodacards/sdk",
   "support": {
     "docs": "https://developer.sodacards.com",
     "email": "support@sodacards.com"
