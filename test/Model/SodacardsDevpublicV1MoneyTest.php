@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * SodacardsDevpublicV1MoneyTest Class Doc Comment
  *
  * @category    Class
- * @description SodacardsDevpublicV1Money
+ * @description Money is an amount in a currency&#39;s minor units, together with the currency&#39;s  ISO-4217 code and its number of decimal places, so the amount can be  interpreted without assuming the currency. XOF (the West-African CFA franc) has  no minor unit, so an XOF amount is a whole franc value.
  * @package     Sodacards
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

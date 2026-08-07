@@ -80,9 +80,9 @@ class SodacardsDevpublicV1RevealOrderCodesRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "order_id"
+     * Test attribute "id"
      */
-    public function testPropertyOrderId()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

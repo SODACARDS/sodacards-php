@@ -16,7 +16,7 @@ All URIs are relative to https://api.sodacards.com, except if the operation defi
 | [**ping()**](DefaultApi.md#ping) | **GET** /v1/ping | Ping |
 | [**placeOrder()**](DefaultApi.md#placeOrder) | **POST** /v1/orders | Place an order |
 | [**registerWebhook()**](DefaultApi.md#registerWebhook) | **POST** /v1/webhooks | Register a webhook endpoint |
-| [**revealOrderCodes()**](DefaultApi.md#revealOrderCodes) | **GET** /v1/orders/{order_id}/codes | Reveal order codes |
+| [**revealOrderCodes()**](DefaultApi.md#revealOrderCodes) | **GET** /v1/orders/{id}/codes | Reveal order codes |
 | [**rotateWebhookSecret()**](DefaultApi.md#rotateWebhookSecret) | **POST** /v1/webhooks/{id}/rotate | Rotate a webhook signing secret |
 
 
@@ -542,7 +542,7 @@ $apiInstance = new Sodacards\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$idempotency_key = 'idempotency_key_example'; // string | A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order.
+$idempotency_key = 'idempotency_key_example'; // string | A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict.
 $sodacards_devpublic_v1_place_order_request = new \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest(); // \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest
 
 try {
@@ -557,7 +557,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **idempotency_key** | **string**| A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. | |
+| **idempotency_key** | **string**| A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. | |
 | **sodacards_devpublic_v1_place_order_request** | [**\Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest**](../Model/SodacardsDevpublicV1PlaceOrderRequest.md)|  | |
 
 ### Return type
@@ -642,7 +642,7 @@ try {
 ## `revealOrderCodes()`
 
 ```php
-revealOrderCodes($order_id): \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse
+revealOrderCodes($id): \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse
 ```
 
 Reveal order codes
@@ -668,10 +668,10 @@ $apiInstance = new Sodacards\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 'order_id_example'; // string | order_id is the order whose codes to reveal.
+$id = 'id_example'; // string | id is the order whose codes to reveal.
 
 try {
-    $result = $apiInstance->revealOrderCodes($order_id);
+    $result = $apiInstance->revealOrderCodes($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->revealOrderCodes: ', $e->getMessage(), PHP_EOL;
@@ -682,7 +682,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **string**| order_id is the order whose codes to reveal. | |
+| **id** | **string**| id is the order whose codes to reveal. | |
 
 ### Return type
 

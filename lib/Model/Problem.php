@@ -1,6 +1,6 @@
 <?php
 /**
- * ProblemDetails
+ * Problem
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \Sodacards\ObjectSerializer;
 
 /**
- * ProblemDetails Class Doc Comment
+ * Problem Class Doc Comment
  *
  * @category Class
- * @description An RFC 9457 problem document. Every error response uses this shape. Switch on &#x60;code&#x60; (stable, machine-readable), never on &#x60;title&#x60; or &#x60;detail&#x60; (human copy, may change). &#x60;status&#x60; mirrors the HTTP status.
+ * @description An RFC 9457 problem+json error. Switch on &#x60;code&#x60;, the stable machine-readable reason; the HTTP status frames the broad category.
  * @package  Sodacards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class Problem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'ProblemDetails';
+    protected static $openAPIModelName = 'Problem';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -74,9 +74,9 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'type' => 'uri',
+        'type' => null,
         'title' => null,
-        'status' => null,
+        'status' => 'int32',
         'code' => null,
         'detail' => null,
         'request_id' => null
@@ -350,7 +350,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type A URI identifying the error type, e.g. https://developer.sodacards.com/errors/insufficient_balance.
+     * @param string $type A stable URI identifying the error kind; it resolves to the docs section for that code.
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string $title A short, human-readable summary of the error.
+     * @param string $title A short, human-readable summary of the error kind.
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param int $status The HTTP status code, repeated for convenience.
+     * @param int $status The HTTP status code, repeated in the body for convenience.
      *
      * @return self
      */
@@ -431,7 +431,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code A stable, machine-readable error code, e.g. insufficient_balance. Switch on this.
+     * @param string $code The machine-readable reason (e.g. \"insufficient_balance\"): switch on this, never on the human text.
      *
      * @return self
      */
@@ -458,7 +458,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets detail
      *
-     * @param string|null $detail A human-readable explanation specific to this occurrence.
+     * @param string|null $detail A human-readable explanation of this specific occurrence. May be absent.
      *
      * @return self
      */
@@ -485,7 +485,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_id
      *
-     * @param string|null $request_id The request identifier, to quote when contacting support.
+     * @param string|null $request_id Identifies this request in support conversations. May be absent.
      *
      * @return self
      */

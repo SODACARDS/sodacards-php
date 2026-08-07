@@ -168,7 +168,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return object|\Sodacards\Model\Problem
      */
     public function deleteWebhook($id, string $contentType = self::contentTypes['deleteWebhook'][0])
     {
@@ -186,7 +186,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWebhookWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhook'][0])
     {
@@ -222,45 +222,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 503:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -296,58 +260,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -538,7 +454,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse|\Sodacards\Model\Problem
      */
     public function getBalance(string $contentType = self::contentTypes['getBalance'][0])
     {
@@ -555,7 +471,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetBalanceResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBalanceWithHttpInfo(string $contentType = self::contentTypes['getBalance'][0])
     {
@@ -591,33 +507,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -653,42 +545,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -862,7 +722,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1GetOrderResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1GetOrderResponse|\Sodacards\Model\Problem
      */
     public function getOrder($id, string $contentType = self::contentTypes['getOrder'][0])
     {
@@ -880,7 +740,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetOrderResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetOrderResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
@@ -916,39 +776,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -984,50 +814,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1219,7 +1009,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1GetProductResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1GetProductResponse|\Sodacards\Model\Problem
      */
     public function getProduct($id, string $contentType = self::contentTypes['getProduct'][0])
     {
@@ -1237,7 +1027,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetProductResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1GetProductResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProductWithHttpInfo($id, string $contentType = self::contentTypes['getProduct'][0])
     {
@@ -1273,39 +1063,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -1341,50 +1101,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1577,7 +1297,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1ListCatalogResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1ListCatalogResponse|\Sodacards\Model\Problem
      */
     public function listCatalog($limit = null, $cursor = null, string $contentType = self::contentTypes['listCatalog'][0])
     {
@@ -1596,7 +1316,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListCatalogResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListCatalogResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCatalogWithHttpInfo($limit = null, $cursor = null, string $contentType = self::contentTypes['listCatalog'][0])
     {
@@ -1632,39 +1352,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -1700,50 +1390,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1945,7 +1595,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1ListOrdersResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1ListOrdersResponse|\Sodacards\Model\Problem
      */
     public function listOrders($limit = null, $cursor = null, $reference = null, string $contentType = self::contentTypes['listOrders'][0])
     {
@@ -1965,7 +1615,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListOrdersResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListOrdersResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOrdersWithHttpInfo($limit = null, $cursor = null, $reference = null, string $contentType = self::contentTypes['listOrders'][0])
     {
@@ -2001,39 +1651,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -2069,50 +1689,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2324,7 +1904,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1ListWebhooksResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1ListWebhooksResponse|\Sodacards\Model\Problem
      */
     public function listWebhooks(string $contentType = self::contentTypes['listWebhooks'][0])
     {
@@ -2341,7 +1921,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListWebhooksResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1ListWebhooksResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWebhooksWithHttpInfo(string $contentType = self::contentTypes['listWebhooks'][0])
     {
@@ -2377,39 +1957,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 503:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -2445,50 +1995,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2661,7 +2171,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1PingResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1PingResponse|\Sodacards\Model\Problem
      */
     public function ping(string $contentType = self::contentTypes['ping'][0])
     {
@@ -2678,7 +2188,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1PingResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1PingResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function pingWithHttpInfo(string $contentType = self::contentTypes['ping'][0])
     {
@@ -2714,27 +2224,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -2770,34 +2262,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2966,13 +2434,13 @@ class DefaultApi
      *
      * Place an order
      *
-     * @param  string $idempotency_key A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. (required)
+     * @param  string $idempotency_key A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. (required)
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse|\Sodacards\Model\Problem
      */
     public function placeOrder($idempotency_key, $sodacards_devpublic_v1_place_order_request, string $contentType = self::contentTypes['placeOrder'][0])
     {
@@ -2985,13 +2453,13 @@ class DefaultApi
      *
      * Place an order
      *
-     * @param  string $idempotency_key A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. (required)
+     * @param  string $idempotency_key A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. (required)
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1PlaceOrderResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function placeOrderWithHttpInfo($idempotency_key, $sodacards_devpublic_v1_place_order_request, string $contentType = self::contentTypes['placeOrder'][0])
     {
@@ -3027,57 +2495,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 402:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 422:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -3113,74 +2533,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 402:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3197,7 +2553,7 @@ class DefaultApi
      *
      * Place an order
      *
-     * @param  string $idempotency_key A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. (required)
+     * @param  string $idempotency_key A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. (required)
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
      *
@@ -3219,7 +2575,7 @@ class DefaultApi
      *
      * Place an order
      *
-     * @param  string $idempotency_key A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. (required)
+     * @param  string $idempotency_key A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. (required)
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
      *
@@ -3270,7 +2626,7 @@ class DefaultApi
     /**
      * Create request for operation 'placeOrder'
      *
-     * @param  string $idempotency_key A unique key that makes order placement safe to retry: a retried request with the same key never places a second order. Reusing a key with a different body is rejected. Use a UUID you generate per order. (required)
+     * @param  string $idempotency_key A unique key so a retried request never places a second order. Reuse the same key to retry a call safely; reusing it with a different body is a conflict. (required)
      * @param  \Sodacards\Model\SodacardsDevpublicV1PlaceOrderRequest $sodacards_devpublic_v1_place_order_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['placeOrder'] to see the possible values for this operation
      *
@@ -3385,7 +2741,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookResponse|\Sodacards\Model\Problem
      */
     public function registerWebhook($sodacards_devpublic_v1_register_webhook_request, string $contentType = self::contentTypes['registerWebhook'][0])
     {
@@ -3403,7 +2759,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1RegisterWebhookResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function registerWebhookWithHttpInfo($sodacards_devpublic_v1_register_webhook_request, string $contentType = self::contentTypes['registerWebhook'][0])
     {
@@ -3439,45 +2795,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 503:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -3513,58 +2833,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3750,16 +3022,16 @@ class DefaultApi
      *
      * Reveal order codes
      *
-     * @param  string $order_id order_id is the order whose codes to reveal. (required)
+     * @param  string $id id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse|\Sodacards\Model\Problem
      */
-    public function revealOrderCodes($order_id, string $contentType = self::contentTypes['revealOrderCodes'][0])
+    public function revealOrderCodes($id, string $contentType = self::contentTypes['revealOrderCodes'][0])
     {
-        list($response) = $this->revealOrderCodesWithHttpInfo($order_id, $contentType);
+        list($response) = $this->revealOrderCodesWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -3768,16 +3040,16 @@ class DefaultApi
      *
      * Reveal order codes
      *
-     * @param  string $order_id order_id is the order whose codes to reveal. (required)
+     * @param  string $id id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function revealOrderCodesWithHttpInfo($order_id, string $contentType = self::contentTypes['revealOrderCodes'][0])
+    public function revealOrderCodesWithHttpInfo($id, string $contentType = self::contentTypes['revealOrderCodes'][0])
     {
-        $request = $this->revealOrderCodesRequest($order_id, $contentType);
+        $request = $this->revealOrderCodesRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3809,45 +3081,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -3883,58 +3119,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3951,15 +3139,15 @@ class DefaultApi
      *
      * Reveal order codes
      *
-     * @param  string $order_id order_id is the order whose codes to reveal. (required)
+     * @param  string $id id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revealOrderCodesAsync($order_id, string $contentType = self::contentTypes['revealOrderCodes'][0])
+    public function revealOrderCodesAsync($id, string $contentType = self::contentTypes['revealOrderCodes'][0])
     {
-        return $this->revealOrderCodesAsyncWithHttpInfo($order_id, $contentType)
+        return $this->revealOrderCodesAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3972,16 +3160,16 @@ class DefaultApi
      *
      * Reveal order codes
      *
-     * @param  string $order_id order_id is the order whose codes to reveal. (required)
+     * @param  string $id id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revealOrderCodesAsyncWithHttpInfo($order_id, string $contentType = self::contentTypes['revealOrderCodes'][0])
+    public function revealOrderCodesAsyncWithHttpInfo($id, string $contentType = self::contentTypes['revealOrderCodes'][0])
     {
         $returnType = '\Sodacards\Model\SodacardsDevpublicV1RevealOrderCodesResponse';
-        $request = $this->revealOrderCodesRequest($order_id, $contentType);
+        $request = $this->revealOrderCodesRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4022,24 +3210,24 @@ class DefaultApi
     /**
      * Create request for operation 'revealOrderCodes'
      *
-     * @param  string $order_id order_id is the order whose codes to reveal. (required)
+     * @param  string $id id is the order whose codes to reveal. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revealOrderCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function revealOrderCodesRequest($order_id, string $contentType = self::contentTypes['revealOrderCodes'][0])
+    public function revealOrderCodesRequest($id, string $contentType = self::contentTypes['revealOrderCodes'][0])
     {
 
-        // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $order_id when calling revealOrderCodes'
+                'Missing the required parameter $id when calling revealOrderCodes'
             );
         }
 
 
-        $resourcePath = '/v1/orders/{order_id}/codes';
+        $resourcePath = '/v1/orders/{id}/codes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4049,10 +3237,10 @@ class DefaultApi
 
 
         // path params
-        if ($order_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{order_id}',
-                ObjectSerializer::toPathValue($order_id),
+                '{id}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -4126,7 +3314,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails
+     * @return \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse|\Sodacards\Model\Problem
      */
     public function rotateWebhookSecret($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
     {
@@ -4144,7 +3332,7 @@ class DefaultApi
      *
      * @throws \Sodacards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails|\Sodacards\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Sodacards\Model\SodacardsDevpublicV1RotateWebhookSecretResponse|\Sodacards\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function rotateWebhookSecretWithHttpInfo($id, string $contentType = self::contentTypes['rotateWebhookSecret'][0])
     {
@@ -4180,45 +3368,9 @@ class DefaultApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 503:
-                    return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
                 default:
                     return $this->handleResponseWithDataType(
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $request,
                         $response,
                     );
@@ -4254,58 +3406,10 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Sodacards\Model\ProblemDetails',
+                        '\Sodacards\Model\Problem',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

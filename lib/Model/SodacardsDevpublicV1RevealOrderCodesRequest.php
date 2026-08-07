@@ -57,7 +57,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $openAPITypes = [
-        'order_id' => 'string'
+        'id' => 'string'
     ];
 
     /**
@@ -68,7 +68,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'order_id' => null
+        'id' => null
     ];
 
     /**
@@ -77,7 +77,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'order_id' => false
+        'id' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'orderId'
+        'id' => 'id'
     ];
 
     /**
@@ -175,7 +175,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId'
+        'id' => 'setId'
     ];
 
     /**
@@ -184,7 +184,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId'
+        'id' => 'getId'
     ];
 
     /**
@@ -244,7 +244,7 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -290,28 +290,28 @@ class SodacardsDevpublicV1RevealOrderCodesRequest implements ModelInterface, Arr
 
 
     /**
-     * Gets order_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getOrderId()
+    public function getId()
     {
-        return $this->container['order_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets order_id
+     * Sets id
      *
-     * @param string|null $order_id order_id is the order whose codes to reveal.
+     * @param string|null $id id is the order whose codes to reveal.
      *
      * @return self
      */
-    public function setOrderId($order_id)
+    public function setId($id)
     {
-        if (is_null($order_id)) {
-            throw new \InvalidArgumentException('non-nullable order_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['order_id'] = $order_id;
+        $this->container['id'] = $id;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ProblemDetailsTest
+ * ProblemTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace Sodacards\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ProblemDetailsTest Class Doc Comment
+ * ProblemTest Class Doc Comment
  *
  * @category    Class
- * @description An RFC 9457 problem document. Every error response uses this shape. Switch on &#x60;code&#x60; (stable, machine-readable), never on &#x60;title&#x60; or &#x60;detail&#x60; (human copy, may change). &#x60;status&#x60; mirrors the HTTP status.
+ * @description An RFC 9457 problem+json error. Switch on &#x60;code&#x60;, the stable machine-readable reason; the HTTP status frames the broad category.
  * @package     Sodacards
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ProblemDetailsTest extends TestCase
+class ProblemTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class ProblemDetailsTest extends TestCase
     }
 
     /**
-     * Test "ProblemDetails"
+     * Test "Problem"
      */
-    public function testProblemDetails()
+    public function testProblem()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
